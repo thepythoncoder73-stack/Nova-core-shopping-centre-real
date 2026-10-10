@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Core Shopping Center</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #10172b, #263c67);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #080e1c;
+            padding: 25px 15px;
+            border-bottom: 2px solid #57d5ff;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #57d5ff;
+            font-size: 32px;
+        }
+
+        header p {
+            color: #c5d5ee;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .panel {
+            background: #1b2944;
+            border: 1px solid #40577d;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px #0004;
+        }
+
+        h2 {
+            color: #57d5ff;
+        }
+
+        button, select, input {
+            font-size: 16px;
+            padding: 12px;
+            margin: 7px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background: #57d5ff;
+            color: #10172b;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .menu button {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 12px auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 15px;
+        }
+
+        .product {
+            background: #101b30;
+            border: 1px solid #40577d;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .phone {
+            font-size: 55px;
+        }
+
+        .price {
+            color: #57d5ff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input, select {
+            max-width: 100%;
+            background: white;
+            color: #10172b;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            color: #8dffbd;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 20px;
+            color: #b7c7df;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✦ NOVA CORE</h1>
+    <p>The Future, Centered.</p>
+</header>
+
+<main>
+
+    <section id="update" class="panel">
+        <h2>Welcome to Nova Core Shopping Center!</h2>
+        <p>There is an update available for this application.</p>
+        <button onclick="updateApp(true)">Update</button>
+        <button onclick="updateApp(false)">Skip Update</button>
+        <p id="updateMessage"></p>
+    </section>
+
+    <section id="menu" class="panel hidden">
+        <h2>Choose Your Options</h2>
+
+        <div class="menu">
+            <button onclick="showPage('about')">1. About Us</button>
+            <button onclick="showPage('shopping')">2. Shopping</button>
+            <button onclick="showPage('cart')">3. Shopping Cart</button>
+            <button onclick="showPage('newphones')">4. Our New Phones!</button>
+            <button onclick="showPage('accessories')">5. NEW! Device Accessories</button>
+            <button onclick="exitApp()">6. Exit</button>
+        </div>
+    </section>
+
+    <section id="about" class="panel hidden">
+        <h2>About Nova Core</h2>
+        <h3>The Future, Centered.</h3>
+        <p>
+            At Nova Core, we don't just build smartphones; we build the
+            heartbeat of your digital life. Born from a fusion of
+            high-speed innovation and minimalist design, our mission
+            is simple: to put Nova brilliance at the Core of everything you do.
+        </p>
+        <p>
+            We obsess over raw power, stunning optics, and a seamless
+            user experience. No gimmicks, no clutter—just elite technology
+            designed to move as fast as you do.
+        </p>
+        <h3>Nova Core. Find Your Center.</h3>
+        <button onclick="showPage('menu')">Back to Menu</button>
+    </section>
+
+    <section id="shopping" class="panel hidden">
+        <h2>Our Phones</h2>
+        <div class="product-grid">
+
+            <div class="product">
+                <div class="phone">📱</div>
+                <h3>Nova Core Vortex</h3>
+                <p>Raw power and high-speed performance for those who never slow down.</p>
+                <p class="price">$13,000</p>
+                <button onclick="addToCart('Nova Core Vortex', 13000)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="phone">📱</div>
+                <h3>Nova Core Lume</h3>
+                <p>A masterpiece of light and glass, built for elite mobile photography.</p>
+                <p class="price">$15,000</p>
+                <button onclick="addToCart('Nova Core Lume', 15000)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="phone">📱</div>
+                <h3>Nova Core Apex</h3>
+                <p>Our most advanced technology in a premium aerospace-grade design.</p>
+                <p class="price">$12,000</p>
+                <button onclick="addToCart('Nova Core Apex', 12000)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="phone">📱</div>
+                <h3>Nova Core Lite</h3>
+                <p>The essential Nova experience, refined into a sleek and accessible build.</p>
+                <p class="price">$17,000</p>
+                <button onclick="addToCart('Nova Core Lite', 17000)">Add to Cart</button>
+            </div>
+
+        </div>
+        <button onclick="showPage('menu')">Back to Menu</button>
+    </section>
+
+    <section id="cart" class="panel hidden">
+        <h2>🛒 Your Shopping Cart</h2>
+        <div id="cartItems">Your cart is empty.</div>
+        <h3 id="total">Total: $0</h3>
+        <button onclick="showPage('shopping')">Continue Shopping</button>
+        <button onclick="showPage('checkout')">Proceed to Checkout</button>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="showPage('menu')">Back to Menu</button>
+    </section>
+
+    <section id="checkout" class="panel hidden">
+        <h2>Checkout</h2>
+        <p>Complete your order details.</p>
+
+        <form onsubmit="checkout(event)">
+            <input type="email" id="email" placeholder="Enter your email address" required>
+            <br>
+
+            <select id="delivery">
+                <option value="0">Shop pickup — Free</option>
+                <option value="200">Home delivery — $200</option>
+            </select>
+            <br>
+
+            <div id="checkoutTotal"></div>
+            <button type="submit">Confirm Order</button>
+            <button type="button" onclick="showPage('cart')">Back to Cart</button>
+        </form>
+
+        <p id="orderMessage" class="message"></p>
+    </section>
+
+    <section id="newphones" class="panel hidden">
+        <h2>Our New Phones!</h2>
+        <p>No new phones currently. We're making your devices better than usual!</p>
+        <button onclick="showPage('menu')">Back to Menu</button>
+    </section>
+
+    <section id="accessories" class="panel hidden">
+        <h2>Welcome to the Accessories Page!</h2>
+        <div class="product-grid">
+
+            <div class="product">
+                <div class="phone">🔌</div>
+                <h3>The Beam</h3>
+                <p>65W charger. Charges your Nova Core to 80% in just 20 minutes.</p>
+                <p class="price">$49</p>
+                <button onclick="addToCart('The Beam Charger', 49)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="phone">⚡</div>
+                <h3>The Flow</h3>
+                <p>A charging pad designed to charge your compatible devices all at once.</p>
+                <p class="price">Price not listed</p>
+                <p>Contact our store for pricing.</p>
+            </div>
+
+        </div>
+        <button onclick="showPage('menu')">Back to Menu</button>
+    </section>
+
+    <section id="exit" class="panel hidden">
+        <h2>Thank You!</h2>
+        <p>Thank you for using Nova Core Shopping Center Online.</p>
+        <button onclick="restartApp()">Return to Home</button>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 Nova Core | The Future, Centered.
+</footer>
+
+<script>
+    let cart = [];
+    let updateCompleted = false;
+
+    function updateApp(doUpdate) {
+        const message = document.getElementById("updateMessage");
+
+        if (doUpdate) {
+            message.textContent = "Updating...";
+            setTimeout(() => {
+                message.textContent = "Updating finished!";
+                finishUpdate();
+            }, 1000);
+        } else {
+            message.textContent = "Update skipped.";
+            finishUpdate();
+        }
+    }
+
+    function finishUpdate() {
+        updateCompleted = true;
+        document.getElementById("update").classList.add("hidden");
+        document.getElementById("menu").classList.remove("hidden");
+    }
+
+    function showPage(page) {
+        document.querySelectorAll("main > section").forEach(section => {
+            section.classList.add("hidden");
+        });
+
+        document.getElementById(page).classList.remove("hidden");
+
+        if (page === "cart") {
+            renderCart();
+        }
+
+        if (page === "checkout") {
+            updateCheckoutTotal();
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function addToCart(name, price) {
+        cart.push({ name: name, price: price });
+        alert(name + " added to your shopping cart!");
+        renderCart();
+    }
+
+    function renderCart() {
+        const container = document.getElementById("cartItems");
+        const totalElement = document.getElementById("total");
+
+        if (cart.length === 0) {
+            container.textContent = "Your cart is empty.";
+        } else {
+            container.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                const row = document.createElement("p");
+                row.textContent = item.name + " — $" +
+                    item.price.toLocaleString() + " ";
+
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.onclick = () => {
+                    cart.splice(index, 1);
+                    renderCart();
+                };
+
+                row.appendChild(removeButton);
+                container.appendChild(row);
+            });
+        }
+
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        totalElement.textContent = "Total: $" + total.toLocaleString();
+    }
+
+    function clearCart() {
+        cart = [];
+        renderCart();
+    }
+
+    function updateCheckoutTotal() {
+        const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        const delivery = Number(document.getElementById("delivery").value);
+
+        document.getElementById("checkoutTotal").textContent =
+            "Order total: $" + (subtotal + delivery).toLocaleString();
+    }
+
+    document.getElementById("delivery").addEventListener("change", updateCheckoutTotal);
+
+    function checkout(event) {
+        event.preventDefault();
+
+        if (cart.length === 0) {
+            document.getElementById("orderMessage").textContent =
+                "Your cart is empty. Please add a product first.";
+            return;
+        }
+
+        const email = document.getElementById("email").value;
+        const delivery = Number(document.getElementById("delivery").value);
+        const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        const total = subtotal + delivery;
+
+        document.getElementById("orderMessage").textContent =
+            "Thank you for your order, " + email +
+            "! Your total is $" + total.toLocaleString() +
+            ". Our staff will get your order ready.";
+
+        cart = [];
+        renderCart();
+        document.getElementById("email").value = "";
+    }
+
+    function exitApp() {
+        showPage("exit");
+    }
+
+    function restartApp() {
+        document.getElementById("updateMessage").textContent = "";
+        document.getElementById("update").classList.remove("hidden");
+        document.getElementById("menu").classList.add("hidden");
+    }
+</script>
+
+</body>
+</html>
